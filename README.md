@@ -1,22 +1,22 @@
 <div align="center">
 
-# project_name
+# nonebot-plugin-nobot-here
 
 <a href="https://v2.nonebot.dev/store">
-<img src="https://count.getloli.com/get/@pdm-project-template?theme=booru-lewd"></a>
+<img src="https://count.getloli.com/get/@nonebot-plugin-nobot-here?theme=booru-lewd"></a>
 
-_⭐基于xxx的pdm项目⭐_
+_⭐模仿人类，成为人类！这里没有机器人⭐_
 
 <a href="https://www.python.org/downloads/release/python-390/">
     <img src="https://img.shields.io/badge/python-3.10+-blue"></a>
 <a href="https://qm.qq.com/q/SL6m4KdFe4">
     <img src="https://img.shields.io/badge/QQ-1141538825-yellow"></a>
-<a href="https://github.com/Cvandia/pdm-project-template/blob/main/LICENSE">
+<a href="https://github.com/Cvandia/nonebot-plugin-nobot-here/blob/main/LICENSE">
     <img src="https://img.shields.io/badge/license-MIT-blue"></a>
 <a href="https://v2.nonebot.dev/">
     <img src="https://img.shields.io/badge/Nonebot2-2.2.0+-red"></a>
-<a href="https://github.com/Cvandia/pdm-project-template/blob/main/.github/workflows/ruff-check.yml">
-    <img src="https://github.com/Cvandia/pdm-project-template/actions/workflows/ruff-check.yml/badge.svg?branch=main"></a>
+<a href="https://github.com/Cvandia/nonebot-plugin-nobot-here/blob/main/.github/workflows/ruff-check.yml">
+    <img src="https://github.com/Cvandia/nonebot-plugin-nobot-here/actions/workflows/ruff-check.yml/badge.svg?branch=main"></a>
 
 **中文简体**
 
@@ -26,11 +26,11 @@ _⭐基于xxx的pdm项目⭐_
 
 ## ⭐ 介绍
 
-**这是介绍项目的简介，请根据实际情况修改。**
-这是具体介绍内容
+**一款nonebot2的插件，使你的bot行为在群里表现得更加像人类**
+实现的主要方式：随机发送表情包，或者随机发送通用群聊文字
 
 > [!WARNING]
-> 这是最新提示信息
+> 这里没有任何私密信息，请放心使用。
 
 ## 📜 免责声明
 
@@ -48,31 +48,31 @@ _⭐基于xxx的pdm项目⭐_
 `pipx` 安装
 
 ```bash
-pipx install pdm-project-template -U
+pipx install nonebot-plugin-nobot-here -U
 ```
 
 `pdm` 安装
 
 ```bash
-pdm add pdm-project-template
+pdm add nonebot-plugin-nobot-here
 ```
 
 `poetry` 安装
 
 ```bash
-poetry add pdm-project-template
+poetry add nonebot-plugin-nobot-here
 ```
 
 `nb-cli`安装
 ```bash
-nb plugin install pdm-project-template -U
+nb plugin install nonebot-plugin-nobot-here -U
 ```
 
 `git clone`安装(不推荐)
 
 - 命令窗口`cmd`下运行
 ```bash
-git clone https://github.com/Cvandia/pdm-project-template
+git clone https://github.com/Cvandia/nonebot-plugin-nobot-here
 ```
 
  </details>
