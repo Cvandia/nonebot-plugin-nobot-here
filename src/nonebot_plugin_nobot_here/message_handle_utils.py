@@ -23,6 +23,6 @@ async def check_and_send_plusone(group_id: str, group_data: list, bot, event) ->
         None
     """
     if len(group_data) >= 3 and group_data[-1] == group_data[-2] == group_data[-3]:
-        await UniMessage.text(group_data[-1]).send(event, bot)
+        await UniMessage.load(group_data[-1]).send(event, bot)
         del group_data[-3:]
         data_manager.set_data(group_id, group_data)
