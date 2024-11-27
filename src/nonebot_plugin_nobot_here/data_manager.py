@@ -2,10 +2,16 @@
 Description: data manager
 """
 
+import json
+
 from dataclasses import dataclass
 from dataclasses import field
 from pathlib import Path
-import json
+
+from .config import plugin_config
+
+
+_path = Path(plugin_config.nobot_data_path)
 
 
 @dataclass
@@ -47,4 +53,4 @@ class DataManager:
             self.del_data(key)
 
 
-data_manager = DataManager(Path("./data/no_bot/data.json"), {})
+data_manager = DataManager(_path, {})

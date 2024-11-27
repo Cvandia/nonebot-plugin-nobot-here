@@ -9,6 +9,7 @@ from nonebot.plugin import get_plugin_config
 
 class Config(BaseModel):
     handle_group: bool = True
+    nobot_data_path: str = "./data/no_bot/data.json"
 
 
 plugin_config = get_plugin_config(Config)
