@@ -4,8 +4,7 @@ Description: data manager
 
 import json
 
-from dataclasses import dataclass
-from dataclasses import field
+from dataclasses import dataclass, field
 from pathlib import Path
 
 from .config import plugin_config

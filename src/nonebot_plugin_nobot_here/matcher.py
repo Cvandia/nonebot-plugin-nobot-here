@@ -67,7 +67,7 @@ async def handle_message(bot: Bot, event: Event):
     await check_and_send_plusone(group_id, group_data, bot, event)
 
     # TODO: Bot Random send message to act like a human
-    if len(group_data) >= 5:
+    if len(group_data) >= 20:
         if random.random() < 0.1:
             await UniMessage.text("我不是机器人！").send(event, bot)  # test message
             data_manager.del_data(group_id)
