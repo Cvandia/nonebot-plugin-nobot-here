@@ -8,7 +8,7 @@ from nonebot.plugin import get_plugin_config
 
 
 class Config(BaseModel):
-    db_url: str
+    handle_group: bool = True
 
 
 plugin_config = get_plugin_config(Config)

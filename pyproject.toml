@@ -5,7 +5,7 @@ description = "哪里有机器人?咱不是机器人!"
 authors = [
     {name = "Cvandia", email = "106718176+Cvandia@users.noreply.github.com"},
 ]
-dependencies = ["nonebot2>=2.2.0", "nonebot-plugin-alconna>=0.54.0"]
+dependencies = ["nonebot2>=2.2.0", "nonebot-plugin-alconna>=0.54.0", "nonebot-plugin-apscheduler>=0.5.0"]
 requires-python = ">=3.10,<4.0"
 readme = "README.md"
 license = {text = "MIT"}
