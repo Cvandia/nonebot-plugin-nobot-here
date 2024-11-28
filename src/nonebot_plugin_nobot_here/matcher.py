@@ -3,19 +3,15 @@ Description:
     Matcher and main logic for the plugin
 """
 
-import random
-from nonebot import get_driver
 from nonebot.adapters import Event, Bot
 from nonebot.message import event_preprocessor
 from nonebot.log import logger
 from nonebot.rule import to_me
 from nonebot_plugin_alconna import UniMessage, on_alconna, Alconna, MultiVar, Args
-from nonebot_plugin_apscheduler import scheduler
 
-from .data_manager import data_manager
-from .message_handle_utils import check_and_send_plusone
+from .data_manager import g_group_data, FixedLengthQueue
+from .message_handle_utils import check_and_send_plusone, RandomReply
 
-DRIVER = get_driver()
 
 add_text = on_alconna(
     Alconna(
@@ -38,6 +34,7 @@ del_text = on_alconna(
 
 @event_preprocessor
 async def handle_message(bot: Bot, event: Event):
+    # global g_group_data
     """
     Handle messages before they are processed by the matchers
     """
@@ -46,7 +43,7 @@ async def handle_message(bot: Bot, event: Event):
 
     group_id = getattr(event, "group_id", None)
     if not group_id:
-        logger.warning("Event does not have 'group_id' attribute")
+        logger.warning(__message="Event does not have 'group_id' attribute")
         return
 
     group_id = str(group_id)
@@ -54,38 +51,18 @@ async def handle_message(bot: Bot, event: Event):
     if not raw_message:
         return
 
-    # revert message to json
+    # revert message to UniMessage
     _unimessage = await UniMessage.generate(message=raw_message, bot=bot)
-    _message_json = _unimessage.dump()
 
-    # get group data and append json message to it
-    group_data = data_manager.get_data(group_id) or []
-    group_data.append(_message_json)
-    data_manager.set_data(group_id, group_data)
+    # store message in the group data
+    if group_id not in g_group_data:
+        g_group_data[group_id] = FixedLengthQueue(max_length=30)
+    g_group_data[group_id].append(item=_unimessage)
 
-    # Bot Repeat
-    await check_and_send_plusone(group_id, group_data, bot, event)
+    await check_and_send_plusone(g_group_data[group_id], _unimessage, bot, event)
 
-    # TODO: Bot Random send message to act like a human
-    if len(group_data) >= 20:
-        if random.random() < 0.1:
-            await UniMessage.text("我不是机器人！").send(event, bot)  # test message
-            data_manager.del_data(group_id)
-
-
-@DRIVER.on_bot_connect
-async def startup():
-    if not data_manager.data_path.exists():
-        data_manager.save_data()
-    data_manager.load_data()
-
-    # clear group message count every minute
-    @scheduler.scheduled_job("interval", minutes=1, id="clear_group_message_count")
-    async def _():
-        data_manager.clear_data()
-
-
-@DRIVER.on_bot_disconnect
-async def shutdown():
-    scheduler.shutdown()
-    data_manager.save_data()
+    _totle_len = len(g_group_data[group_id].queue)
+    if _totle_len == 5:
+        random_reply = RandomReply()
+        await random_reply.send(event, bot)
+        g_group_data[group_id].queue.clear()
