@@ -62,7 +62,7 @@ async def handle_message(bot: Bot, event: Event):
     await check_and_send_plusone(g_group_data[group_id], _unimessage, bot, event)
 
     _totle_len = len(g_group_data[group_id].queue)
-    if _totle_len == 5:
+    if _totle_len == 10:
         random_reply = RandomReply()
         await random_reply.send(event, bot)
         g_group_data[group_id].queue.clear()

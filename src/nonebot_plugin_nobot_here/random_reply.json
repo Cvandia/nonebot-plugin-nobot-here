@@ -1,0 +1,38 @@
+{
+    "随机回复1": [
+        [
+            {
+                "type": "text",
+                "text": "？？"
+            }
+        ],
+        [
+            {
+                "type": "text",
+                "text": "那是什么"
+            }
+        ]
+    ],
+    "随机回复2": [
+        [
+            {
+                "type": "text",
+                "text": "阿巴阿巴阿巴"
+            }
+        ],
+        [
+            {
+                "type": "text",
+                "text": "听不懂"
+            }
+        ]
+    ],
+    "随机回复3": [
+        [
+            {
+                "type": "image",
+                "url": "https://pic1.zhimg.com/v2-0be04e2b0fd23fe514d0f5eb5cdf516f_r.jpg?source=1940ef5c"
+            }
+        ]
+    ]
+}

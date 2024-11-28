@@ -13,9 +13,9 @@ from nonebot.log import logger
 from pathlib import Path
 
 from .data_manager import FixedLengthQueue
-from .config import plugin_config
 
-RANDOM_REPLY_DATA_FILE = Path(plugin_config.random_reply_data_path)
+# 随机回复数据文件路径: 该文件下的./random_reply.json
+RANDOM_REPLY_DATA_FILE = Path(__file__).parent / "random_reply.json"
 
 
 async def check_and_send_plusone(
@@ -33,10 +33,6 @@ class RandomReply:
     def __init__(self):
         """实例化时从文件中加载数据"""
         try:
-            if not RANDOM_REPLY_DATA_FILE.exists():
-                with open(RANDOM_REPLY_DATA_FILE, "w", encoding="utf-8") as f:
-                    f.write("{}")
-                logger.warning("随机回复数据文件不存在，已创建")
             with open(RANDOM_REPLY_DATA_FILE, "r", encoding="utf-8") as f:
                 data: dict[str, list[str]] = json.load(f)
             self.reply_list: dict[str, list[UniMessage]] = {
