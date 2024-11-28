@@ -1,5 +1,5 @@
 {
-    "随机回复1": [
+    "那是什么": [
         [
             {
                 "type": "text",
@@ -13,7 +13,7 @@
             }
         ]
     ],
-    "随机回复2": [
+    "听不懂喵": [
         [
             {
                 "type": "text",
@@ -27,11 +27,43 @@
             }
         ]
     ],
-    "随机回复3": [
+    "累了.jpg": [
         [
             {
                 "type": "image",
                 "url": "https://pic1.zhimg.com/v2-0be04e2b0fd23fe514d0f5eb5cdf516f_r.jpg?source=1940ef5c"
+            }
+        ]
+    ],
+    "喵喵喵": [
+        [
+            {
+                "type": "text",
+                "text": "喵喵喵"
+            }
+        ],
+        [
+            {
+                "type": "image",
+                "url": "https://truth.bahamut.com.tw/s01/202007/30a11ea048622e17463adb0816698984.JPG"
+            }
+        ]
+    ],
+    "塔菲无语.jpg":
+    [
+        [
+            {
+                "type":"image",
+                "url":"https://th.bing.com/th/id/OIP.XQ_A_kGksIO8r9M83G9AoAAAAA?rs=1&pid=ImgDetMain"
+            }
+        ]
+    ],
+    "copo.jpg":
+    [
+        [
+            {
+                "type":"image",
+                "url":"https://imgo.liulanqi.net/img2020/12/17/19/202012171938917466.gif"
             }
         ]
     ]

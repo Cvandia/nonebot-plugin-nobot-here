@@ -3,6 +3,8 @@ Description:
     Matcher and main logic for the plugin
 """
 
+import random
+
 from nonebot.adapters import Event, Bot
 from nonebot.message import event_preprocessor
 from nonebot.log import logger
@@ -62,7 +64,7 @@ async def handle_message(bot: Bot, event: Event):
     await check_and_send_plusone(g_group_data[group_id], _unimessage, bot, event)
 
     _totle_len = len(g_group_data[group_id].queue)
-    if _totle_len == 10:
+    if _totle_len == 10 and random.random() > 0.5:
         random_reply = RandomReply()
         await random_reply.send(event, bot)
         g_group_data[group_id].queue.clear()
