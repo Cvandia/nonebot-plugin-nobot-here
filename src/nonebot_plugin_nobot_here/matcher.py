@@ -45,7 +45,7 @@ async def handle_message(bot: Bot, event: Event):
 
     group_id = getattr(event, "group_id", None)
     if not group_id:
-        logger.warning(__message="Event does not have 'group_id' attribute")
+        logger.warning("Event does not have 'group_id' attribute")
         return
 
     group_id = str(group_id)
