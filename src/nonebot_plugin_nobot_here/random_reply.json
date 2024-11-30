@@ -49,21 +49,57 @@
             }
         ]
     ],
-    "塔菲无语.jpg":
-    [
+    "塔菲无语.jpg": [
         [
             {
-                "type":"image",
-                "url":"https://th.bing.com/th/id/OIP.XQ_A_kGksIO8r9M83G9AoAAAAA?rs=1&pid=ImgDetMain"
+                "type": "image",
+                "url": "https://th.bing.com/th/id/OIP.XQ_A_kGksIO8r9M83G9AoAAAAA?rs=1&pid=ImgDetMain"
             }
         ]
     ],
-    "copo.jpg":
-    [
+    "copo.jpg": [
         [
             {
-                "type":"image",
-                "url":"https://imgo.liulanqi.net/img2020/12/17/19/202012171938917466.gif"
+                "type": "image",
+                "url": "https://imgo.liulanqi.net/img2020/12/17/19/202012171938917466.gif"
+            }
+        ]
+    ],
+    "有情况.jpg": [
+        [
+            {
+                "type": "image",
+                "url": "https://th.bing.com/th/id/OIP.MHV52GdhT3_oP8IZiOdLJwAAAA?rs=1&pid=ImgDetMain"
+            }
+        ]
+    ],
+    "没人喜欢我": [
+        [
+            {
+                "type": "text",
+                "text": "呜呜，没人喜欢我"
+            }
+        ],
+        [
+            {
+                "type": "image",
+                "url": "https://th.bing.com/th/id/OIP.tgTiNNULFELe6mNNaf3idQHaHa?rs=1&pid=ImgDetMain"
+            }
+        ]
+    ],
+    "摆烂.jpg": [
+        [
+            {
+                "type": "image",
+                "url": "https://pic2.zhimg.com/v2-cd47675ec5d3e9b6dbb20d260a055879_r.jpg"
+            }
+        ]
+    ],
+    "摆烂24小时.gif": [
+        [
+            {
+                "type": "image",
+                "url": "https://imgs.qiubiaoqing.com/qiubiaoqing/imgs/6395b889795d92XR.gif"
             }
         ]
     ]
