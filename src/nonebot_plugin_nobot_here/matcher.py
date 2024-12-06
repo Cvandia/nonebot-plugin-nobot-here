@@ -3,17 +3,16 @@ Description:
     Matcher and main logic for the plugin
 """
 
-import random
+import secrets
 
-from nonebot.adapters import Event, Bot
-from nonebot.message import event_preprocessor
+from nonebot.adapters import Bot, Event
 from nonebot.log import logger
+from nonebot.message import event_preprocessor
 from nonebot.rule import to_me
-from nonebot_plugin_alconna import UniMessage, on_alconna, Alconna, MultiVar, Args
+from nonebot_plugin_alconna import Alconna, Args, MultiVar, UniMessage, on_alconna
 
-from .data_manager import g_group_data, FixedLengthQueue
-from .message_handle_utils import check_and_send_plusone, RandomReply
-
+from .data_manager import FixedLengthQueue, g_group_data
+from .message_handle_utils import RandomReply, check_and_send_plusone
 
 add_text = on_alconna(
     Alconna(
@@ -62,9 +61,10 @@ async def handle_message(bot: Bot, event: Event):
     g_group_data[group_id].append(item=_unimessage)
 
     await check_and_send_plusone(g_group_data[group_id], _unimessage, bot, event)
-
+    QUEUE_LEN = 10
+    RANDOM_REPLY_PROB = 50
     _totle_len = len(g_group_data[group_id].queue)
-    if _totle_len == 10 and random.random() > 0.5:
+    if _totle_len >= QUEUE_LEN and secrets.randbelow(100) < RANDOM_REPLY_PROB:
         random_reply = RandomReply()
         await random_reply.send(event, bot)
         g_group_data[group_id].queue.clear()

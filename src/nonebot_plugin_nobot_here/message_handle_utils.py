@@ -3,14 +3,14 @@ Description:
     Utils for handling messages
 """
 
-import json
-import random
 import asyncio
+import json
+import secrets
+from pathlib import Path
 
-from nonebot_plugin_alconna import UniMessage
 from nonebot.adapters import Bot, Event
 from nonebot.log import logger
-from pathlib import Path
+from nonebot_plugin_alconna import UniMessage
 
 from .data_manager import FixedLengthQueue
 
@@ -21,8 +21,9 @@ RANDOM_REPLY_DATA_FILE = Path(__file__).parent / "random_reply.json"
 async def check_and_send_plusone(
     message_list: FixedLengthQueue, message: UniMessage, bot, event
 ):
+    PLUS_ONE_CNT = 4
     _cnt = message_list.count(message)
-    if _cnt >= 3:
+    if _cnt >= PLUS_ONE_CNT:
         await message.send(event, bot)
         message_list.remove_all(message)
 
@@ -33,7 +34,7 @@ class RandomReply:
     def __init__(self):
         """实例化时从文件中加载数据"""
         try:
-            with open(RANDOM_REPLY_DATA_FILE, "r", encoding="utf-8") as f:
+            with Path.open(RANDOM_REPLY_DATA_FILE, encoding="utf-8") as f:
                 data: dict[str, list[str]] = json.load(f)
             self.reply_list: dict[str, list[UniMessage]] = {
                 key: [UniMessage.load(message) for message in value]
@@ -49,7 +50,7 @@ class RandomReply:
         # 从dict中随机选择一个key
         if not self.reply_list:
             return
-        _random_choice = random.choice(list(self.reply_list.keys()))
+        _random_choice = secrets.choice(list(self.reply_list.keys()))
         for message in self.reply_list[_random_choice]:
             await message.send(event, bot)
-            await asyncio.sleep(random.uniform(0.5, 1.5))
+            await asyncio.sleep(secrets.SystemRandom().uniform(0.5, 1.5))

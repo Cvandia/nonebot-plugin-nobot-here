@@ -3,8 +3,8 @@ Description:
     Config file for nonebot_plugin_nobot_here
 """
 
-from pydantic import BaseModel
 from nonebot.plugin import get_plugin_config
+from pydantic import BaseModel
 
 
 class Config(BaseModel):

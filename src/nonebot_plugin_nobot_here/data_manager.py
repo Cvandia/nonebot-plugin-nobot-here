@@ -3,9 +3,9 @@ Description: data manager
 """
 
 import json
-
 from dataclasses import dataclass, field
 from pathlib import Path
+
 from nonebot import get_driver
 from nonebot.log import logger
 from nonebot_plugin_alconna import UniMessage
@@ -45,7 +45,7 @@ g_group_data: dict[str, FixedLengthQueue] = {}
 def load_data() -> None:
     """加载消息池数据"""
     try:
-        with open(DATA_FILE, "r", encoding="utf-8") as f:
+        with Path.open(DATA_FILE, "r", encoding="utf-8") as f:
             data: dict = json.load(f)
         # 将JSON数据转换为 FixedLengthQueue 实例
         for group_id, message_json in data.items():
@@ -53,7 +53,7 @@ def load_data() -> None:
             g_group_data[group_id] = FixedLengthQueue(30, queue_data)
         logger.info("加载消息池数据成功")
     except FileNotFoundError:
-        with open(DATA_FILE, "w", encoding="utf-8") as f:
+        with Path.open(DATA_FILE, "w", encoding="utf-8") as f:
             f.write("{}")
             logger.info("消息池数据文件不存在，已创建")
             load_data()
@@ -68,7 +68,7 @@ def save_data() -> None:
             group_id: [message.dump() for message in queue.queue]
             for group_id, queue in g_group_data.items()
         }
-        with open(DATA_FILE, "w", encoding="utf-8") as f:
+        with Path.open(DATA_FILE, "w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False, indent=4)
         logger.info("保存消息池数据成功")
     except Exception as e:
