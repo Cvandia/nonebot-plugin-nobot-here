@@ -4,7 +4,9 @@ Description:
 """
 
 from contextlib import suppress
+
 from nonebot import require
+
 from .config import Config
 
 require("nonebot_plugin_apscheduler")
